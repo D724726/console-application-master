@@ -16,7 +16,7 @@ class ErrorLogs extends Command
 
     private $log_path = "./log/";
 
-    private $log_fileName = '';
+    private $log_fileName;
 
 
     /**
