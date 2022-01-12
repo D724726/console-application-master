@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+<row host="ftp://transport.productsup.io" file="coffee_feed.xml" user="pupDev" password="pupDev2018" />
+<row host="ftp://productsup.com" file="coffee_feed.xml" user="DeepakK" password="pupDev2019"/>
+<row host="ftp://productsup.co.in" file="feed.xml" user="pupDev1" password="pupDev2011"/>
+</root>

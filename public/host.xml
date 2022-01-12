@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <row>
+    <host>ftp://transport.productsup.io</host>
+    <file>coffee_feed.xml</file>
+    <user>pupDev</user>
+    <password>pupDev2018</password>
+  </row>
+  <row>
+    <host>ftp://productsup.com</host>
+    <file>coffee.xml</file>
+    <user>deepaK</user>
+    <password>Test@123</password>
+  </row>
+</root>
