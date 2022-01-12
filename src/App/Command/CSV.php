@@ -14,7 +14,7 @@ class CSV extends Command
     private $csvFilePath    = "public";
 
     // CSV Name default empty
-    private $csvName        = "";
+    private $csvName;
 
 
     /**
@@ -24,9 +24,9 @@ class CSV extends Command
     public function __construct(string $fileName = null)
     {
         if ($fileName != NULL) {
-           $this->csvName = $this->csvFilePath.'/sample_CSV_'.$fileName.'.csv';
+           $this->csvName = $this->csvFilePath.'/SAMPLE_CSV_'.$fileName.'.csv';
         }else{
-            $this->csvName = $this->csvFilePath.'/sample_CSV_'.time().'.csv';
+            $this->csvName = $this->csvFilePath.'/SAMPLE_CSV_'.time().'.csv';
         }
     }
 
@@ -41,15 +41,11 @@ class CSV extends Command
     {
         $csvfile = fopen($this->csvName, "w");
 
-        // If header is set then add header
         if (!empty($header)) {
             fputcsv($csvfile, $header);
         }
         
-
-        // Loop array which want to add in CSV
-        foreach ($data as $line)
-        {
+        foreach ($data as $line){
             fputcsv($csvfile,$line,',');      
         }     
         
