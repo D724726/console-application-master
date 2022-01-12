@@ -48,29 +48,6 @@ class XmlRead extends Command
     public function getXMLDataAsArray(String $filePath) : array
     {
 
-        /*$reader = new XMLReader();
-
-        if (!$reader->open($filePath)) {
-            die("Failed to open 'data.xml'");
-        }
-
-
-        $arr = array();
-        while($reader->read()) {
-
-            if ($reader->nodeType == XMLReader::ELEMENT && $reader->name == 'row') {
-                $arr[] =array(
-                    $reader->getAttribute('host'),
-                    $reader->getAttribute('file'),
-                    $reader->getAttribute('user'),
-                    $reader->getAttribute('password')
-                );
-            }
-
-        }
-        print_r($arr);
-        $reader->close();
-        exit;*/
         $decoder = new Serializer([new ObjectNormalizer()],[new XmlEncoder()]);
 
         $xmlData = $decoder->decode(file_get_contents($filePath),'xml');
