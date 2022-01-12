@@ -3,6 +3,7 @@
 <?php
 use Zend\ServiceManager\ServiceManager;
 use Symfony\Component\Console\Application;
+use App\Command\ErrorLogs;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -16,5 +17,6 @@ foreach (require __DIR__ . '/config/commands.php' as $commandName) {
 try {
     $application->run();
 } catch (\Exception $e) {
-    // Handle application's exceptions
+	$errorLogs = new ErrorLogs();
+    $ErrorLogs->errorLog($e->getMessage());
 }
