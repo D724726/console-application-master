@@ -1,0 +1,3 @@
+host,file,user,password
+ftp://transport.productsup.io,coffee_feed.xml,pupDev,pupDev2018
+ftp://productsup.com,coffee.xml,deepaK,Test@123
