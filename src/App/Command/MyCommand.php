@@ -4,14 +4,7 @@ namespace App\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
-
-use Symfony\Component\Serializer\Serializer; 
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-
 use App\Command\CSV;
 use App\Command\XmlRead;
 use App\Command\ErrorLogs;
@@ -40,9 +33,9 @@ class MyCommand extends Command
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
-     * @return void
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $errorLogs = new ErrorLogs();
         
@@ -58,7 +51,7 @@ class MyCommand extends Command
 
                 $output->writeln('Error: '.$validate['message']);
                 $ErrorLogs->errorLog('Error: '.$validate['message']);
-                exit();
+                return Command::FAILURE;
             }
 
 
@@ -90,8 +83,8 @@ class MyCommand extends Command
         } catch (Exception $e) {
             $ErrorLogs->errorLog($e->getMessage());
         }
-        exit;
-        //return Command::SUCCESS;
+        
+        return Command::SUCCESS;
     }
 
 }
