@@ -50,7 +50,7 @@ class MyCommand extends Command
             if($validate['status'] == '1'){
 
                 $output->writeln('Error: '.$validate['message']);
-                $ErrorLogs->errorLog('Error: '.$validate['message']);
+                $errorLogs->errorLog('Error: '.$validate['message']);
                 return Command::FAILURE;
             }
 
@@ -75,13 +75,13 @@ class MyCommand extends Command
 
             if($xmlData['status'] === '1'){
                 $output->writeln('Error: '.$xmlData['message']);
-                $ErrorLogs->errorLog('Error: '.$xmlData['message']);
+                $errorLogs->errorLog('Error: '.$xmlData['message']);
                 
             }
             $output->writeln('EXIT....');
 
         } catch (Exception $e) {
-            $ErrorLogs->errorLog($e->getMessage());
+            $errorLogs->errorLog($e->getMessage());
         }
         
         return Command::SUCCESS;
