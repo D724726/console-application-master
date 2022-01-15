@@ -44,36 +44,42 @@ class MyCommand extends Command
             $this->filePath = $input -> getArgument('importXML');
 
             $xml_Obj = new XmlRead();
-            // Set Import XML Path
+            
+            $validate = $xml_Obj->validateXM($this->filePath);// Set Import XML Path
 
-            $validate = $xml_Obj->validateXM($this->filePath);
             if($validate['status'] == '1'){
 
                 $output->writeln('Error: '.$validate['message']);
+
                 $errorLogs->errorLog('Error: '.$validate['message']);
+
                 return Command::FAILURE;
             }
 
 
             $output->writeln('Start Import XML file....');
 
-            // Read XML file
-            $xmlData = $xml_Obj->getXMLDataAsArray($this->filePath);
+            $xmlData = $xml_Obj->getXMLDataAsArray($this->filePath);// Read XML file
 
             $output->writeln('XML file read successfully....');
 
             if ($xmlData['status'] === '0') {
 
-                $output->writeln('Start creating CSV file.');
+                /***************** CSV File Generate Code *******************/
 
                 $csv = new CSV();
+
+                $output->writeln('Start creating CSV file.');
 
                 $csvFileName = $csv->exportCSV($xmlData['body'],$xmlData['header']);
 
                 $output->writeln($csvFileName .' CSV file created successfully!');
+
+                /***************** END CSV File Generate Code *******************/
             }
 
             if($xmlData['status'] === '1'){
+
                 $output->writeln('Error: '.$xmlData['message']);
                 $errorLogs->errorLog('Error: '.$xmlData['message']);
                 
